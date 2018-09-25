@@ -11,4 +11,8 @@ module.exports = function PostGraphileConnectionFilterPlugin(builder, options) {
     );
   }
   require("./src/PgConnectionArgFilterOperatorsPlugin.js")(builder, options);
+  require("./src/PgConnectionArgFilterPostgisOperatorsPlugin.js")(
+    builder,
+    options
+  );
 };

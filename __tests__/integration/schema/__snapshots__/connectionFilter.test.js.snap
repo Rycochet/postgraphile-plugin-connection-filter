@@ -48,6 +48,9 @@ input BigFloatFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [BigFloat!]
+
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -80,6 +83,9 @@ input BooleanFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [Boolean!]
+
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  overlapsBB: Boolean
 }
 
 \\"\\"\\"All input for the create \`Filterable\` mutation.\\"\\"\\"
@@ -385,6 +391,9 @@ input InternetAddressFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [InternetAddress!]
+
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -429,6 +438,9 @@ input IntFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [Int!]
+
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -485,6 +497,9 @@ input IntListFilter {
 
   \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
   notEqualTo: [Int]
+
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -528,6 +543,9 @@ input JSONFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [JSON!]
+
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -758,6 +776,9 @@ input StringFilter {
   Checks for strings that do not start with this value.  Case insensitive.
   \\"\\"\\"
   notStartsWithInsensitive: String
+
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  overlapsBB: Boolean
 
   \\"\\"\\"Raw SQL 'similar to', wildcards are not escaped\\"\\"\\"
   similarTo: String
