@@ -668,6 +668,11 @@ A filter to be used against String fields. All fields are combined with a logica
 \\"\\"\\"
 input StringFilter {
   \\"\\"\\"
+  Returns TRUE if the Geometries do not 'spatially intersect' - if they do not share any space together.
+  \\"\\"\\"
+  disjointsG: String
+
+  \\"\\"\\"
   Checks for values not equal to this value, treating null like an ordinary value.
   \\"\\"\\"
   distinctFrom: String
@@ -695,6 +700,11 @@ input StringFilter {
 
   \\"\\"\\"Checks for strings that include this value.  Case insensitive.\\"\\"\\"
   includesInsensitive: String
+
+  \\"\\"\\"
+  Returns TRUE if the Geometries/Geography 'spatially intersect in 2D' - (share any portion of space).
+  \\"\\"\\"
+  intersectsG: String
 
   \\"\\"\\"
   If set to true, checks for null values.  If set to false, checks for non-null values.
