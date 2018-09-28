@@ -1,21 +1,11 @@
-const { graphql } = require("graphql");
 const { withPgClient } = require("../helpers");
 const { createPostGraphileSchema } = require("postgraphile-core");
-const { readdirSync, readFile: rawReadFile } = require("fs");
-const { resolve: resolvePath } = require("path");
+const { readdirSync } = require("fs");
 const { printSchema } = require("graphql/utilities");
+const { readFile, executeGqlQueries } = require("./query-helpers");
 const debug = require("debug")("graphile-build:schema");
 
-function readFile(filename, encoding) {
-  return new Promise((resolve, reject) => {
-    rawReadFile(filename, encoding, (err, res) => {
-      if (err) reject(err);
-      else resolve(res);
-    });
-  });
-}
-
-const queriesDir = `${__dirname}/../fixtures/queries`;
+const queriesDir = `${__dirname}/../fixtures/p-queries`;
 const queryFileNames = readdirSync(queriesDir);
 let queryResults = [];
 
@@ -56,38 +46,25 @@ beforeAll(() => {
     // Wait for the schema to resolve. We need the schema to be introspected
     // before we can do anything else!
     const gqlSchemas = await gqlSchemasPromise;
+
+    // Get the appropriate GraphQL schema for this fixture. We want to test
+    // some specific fixtures against a schema configured slightly
+    // differently.
+    const queryFileToGqlSchemaMap = {
+      "connections-filter.dynamic-json.graphql": gqlSchemas.dynamicJson,
+      "connections-filter.simple-collections.graphql":
+        gqlSchemas.simpleCollections,
+    };
+
     // Get a new Postgres client instance.
-    return await withPgClient(async pgClient => {
-      // Add data to the client instance we are using.
-      await pgClient.query(await kitchenSinkData());
-      // Run all of our queries in parallel.
-      return await Promise.all(
-        queryFileNames.map(async fileName => {
-          // Read the query from the file system.
-          const query = await readFile(
-            resolvePath(queriesDir, fileName),
-            "utf8"
-          );
-          // Get the appropriate GraphQL schema for this fixture. We want to test
-          // some specific fixtures against a schema configured slightly
-          // differently.
-          const schemas = {
-            "connections-filter.dynamic-json.graphql": gqlSchemas.dynamicJson,
-            "connections-filter.simple-collections.graphql":
-              gqlSchemas.simpleCollections,
-          };
-          const gqlSchema = schemas[fileName]
-            ? schemas[fileName]
-            : gqlSchemas.normal;
-          // Return the result of our GraphQL query.
-          const result = await graphql(gqlSchema, query, null, {
-            pgClient: pgClient,
-          });
-          if (result.errors) {
-            console.log(result.errors.map(e => e.originalError));
-          }
-          return result;
-        })
+    return withPgClient(async pgClient => {
+      return await executeGqlQueries(
+        pgClient,
+        gqlSchemas,
+        kitchenSinkData,
+        queriesDir,
+        queryFileNames,
+        queryFileToGqlSchemaMap
       );
     });
   })();

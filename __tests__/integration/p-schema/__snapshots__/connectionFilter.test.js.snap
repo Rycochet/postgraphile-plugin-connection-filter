@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`prints a schema with the filter plugin and the connectionFilterLists option 1`] = `
+exports[`prints a schema with the filter plugin 1`] = `
 "\\"\\"\\"
 A floating point number that requires more precision than IEEE 754 binary 64
 \\"\\"\\"
@@ -48,9 +48,6 @@ input BigFloatFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [BigFloat!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -83,9 +80,6 @@ input BooleanFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [Boolean!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"All input for the create \`Filterable\` mutation.\\"\\"\\"
@@ -245,6 +239,9 @@ input FilterableFilter {
   \\"\\"\\"Filter by the object’s \`int\` field.\\"\\"\\"
   int: IntFilter
 
+  \\"\\"\\"Filter by the object’s \`intArray\` field.\\"\\"\\"
+  intArray: IntListFilter
+
   \\"\\"\\"Filter by the object’s \`jsonb\` field.\\"\\"\\"
   jsonb: JSONFilter
 
@@ -388,9 +385,6 @@ input InternetAddressFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [InternetAddress!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -435,9 +429,62 @@ input IntFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [Int!]
+}
 
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
+\\"\\"\\"
+A filter to be used against Int List fields. All fields are combined with a logical ‘and.’
+\\"\\"\\"
+input IntListFilter {
+  \\"\\"\\"Checks for any values equal to this value.\\"\\"\\"
+  anyEqualTo: Int
+
+  \\"\\"\\"Checks for any values greater than this value.\\"\\"\\"
+  anyGreaterThan: Int
+
+  \\"\\"\\"Checks for any values greater than or equal to this value.\\"\\"\\"
+  anyGreaterThanOrEqualTo: Int
+
+  \\"\\"\\"Checks for any values less than this value.\\"\\"\\"
+  anyLessThan: Int
+
+  \\"\\"\\"Checks for any values less than or equal to this value.\\"\\"\\"
+  anyLessThanOrEqualTo: Int
+
+  \\"\\"\\"Checks for any values not equal to this value.\\"\\"\\"
+  anyNotEqualTo: Int
+
+  \\"\\"\\"
+  Checks for values not equal to this value, treating null like an ordinary value.
+  \\"\\"\\"
+  distinctFrom: [Int]
+
+  \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
+  equalTo: [Int]
+
+  \\"\\"\\"Checks for values greater than this value.\\"\\"\\"
+  greaterThan: [Int]
+
+  \\"\\"\\"Checks for values greater than or equal to this value.\\"\\"\\"
+  greaterThanOrEqualTo: [Int]
+
+  \\"\\"\\"
+  If set to true, checks for null values.  If set to false, checks for non-null values.
+  \\"\\"\\"
+  isNull: Boolean
+
+  \\"\\"\\"Checks for values less than this value.\\"\\"\\"
+  lessThan: [Int]
+
+  \\"\\"\\"Checks for values less than or equal to this value.\\"\\"\\"
+  lessThanOrEqualTo: [Int]
+
+  \\"\\"\\"
+  Checks for values equal to this value, treating null like an ordinary value.
+  \\"\\"\\"
+  notDistinctFrom: [Int]
+
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  notEqualTo: [Int]
 }
 
 \\"\\"\\"
@@ -481,9 +528,6 @@ input JSONFilter {
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [JSON!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -716,7 +760,7 @@ input StringFilter {
   notStartsWithInsensitive: String
 
   \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
+  overlapsBB: String
 
   \\"\\"\\"Raw SQL 'similar to', wildcards are not escaped\\"\\"\\"
   similarTo: String

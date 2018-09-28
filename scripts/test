@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-echo $(pwd)
 if [ -x ".env" ]; then
   set -a
   . ./.env

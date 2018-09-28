@@ -1,0 +1,20 @@
+query {
+  overlapping: allFilterables(filter: { theGeom: { overlapsBB: "LINESTRING(1 2, 4 6)" } }) { ...filterableConnection }
+}
+
+fragment filterableConnection on FilterablesConnection {
+  pageInfo {
+    startCursor
+    endCursor
+    hasNextPage
+    hasPreviousPage
+  }
+  totalCount
+  edges {
+    cursor
+    node {
+      id
+      theGeom
+    }
+  }
+}

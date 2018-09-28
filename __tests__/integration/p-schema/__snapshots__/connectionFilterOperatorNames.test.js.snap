@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`prints a schema with the filter plugin 1`] = `
+exports[`prints a schema with the filter plugin and the connectionFilterOperatorNames option 1`] = `
 "\\"\\"\\"
 A floating point number that requires more precision than IEEE 754 binary 64
 \\"\\"\\"
@@ -16,7 +16,7 @@ input BigFloatFilter {
   distinctFrom: BigFloat
 
   \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
-  equalTo: BigFloat
+  eq: BigFloat
 
   \\"\\"\\"Checks for values greater than this value.\\"\\"\\"
   greaterThan: BigFloat
@@ -38,19 +38,16 @@ input BigFloatFilter {
   \\"\\"\\"Checks for values less than or equal to this value.\\"\\"\\"
   lessThanOrEqualTo: BigFloat
 
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  ne: BigFloat
+
   \\"\\"\\"
   Checks for values equal to this value, treating null like an ordinary value.
   \\"\\"\\"
   notDistinctFrom: BigFloat
 
-  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
-  notEqualTo: BigFloat
-
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [BigFloat!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -63,7 +60,7 @@ input BooleanFilter {
   distinctFrom: Boolean
 
   \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
-  equalTo: Boolean
+  eq: Boolean
 
   \\"\\"\\"Checks for values in this list.\\"\\"\\"
   in: [Boolean!]
@@ -73,19 +70,16 @@ input BooleanFilter {
   \\"\\"\\"
   isNull: Boolean
 
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  ne: Boolean
+
   \\"\\"\\"
   Checks for values equal to this value, treating null like an ordinary value.
   \\"\\"\\"
   notDistinctFrom: Boolean
 
-  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
-  notEqualTo: Boolean
-
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [Boolean!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"All input for the create \`Filterable\` mutation.\\"\\"\\"
@@ -356,7 +350,7 @@ input InternetAddressFilter {
   distinctFrom: InternetAddress
 
   \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
-  equalTo: InternetAddress
+  eq: InternetAddress
 
   \\"\\"\\"Checks for values in this list.\\"\\"\\"
   in: [InternetAddress!]
@@ -381,19 +375,16 @@ input InternetAddressFilter {
   \\"\\"\\"
   isNull: Boolean
 
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  ne: InternetAddress
+
   \\"\\"\\"
   Checks for values equal to this value, treating null like an ordinary value.
   \\"\\"\\"
   notDistinctFrom: InternetAddress
 
-  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
-  notEqualTo: InternetAddress
-
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [InternetAddress!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -406,7 +397,7 @@ input IntFilter {
   distinctFrom: Int
 
   \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
-  equalTo: Int
+  eq: Int
 
   \\"\\"\\"Checks for values greater than this value.\\"\\"\\"
   greaterThan: Int
@@ -428,19 +419,16 @@ input IntFilter {
   \\"\\"\\"Checks for values less than or equal to this value.\\"\\"\\"
   lessThanOrEqualTo: Int
 
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  ne: Int
+
   \\"\\"\\"
   Checks for values equal to this value, treating null like an ordinary value.
   \\"\\"\\"
   notDistinctFrom: Int
 
-  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
-  notEqualTo: Int
-
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [Int!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -471,7 +459,7 @@ input IntListFilter {
   distinctFrom: [Int]
 
   \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
-  equalTo: [Int]
+  eq: [Int]
 
   \\"\\"\\"Checks for values greater than this value.\\"\\"\\"
   greaterThan: [Int]
@@ -490,16 +478,13 @@ input IntListFilter {
   \\"\\"\\"Checks for values less than or equal to this value.\\"\\"\\"
   lessThanOrEqualTo: [Int]
 
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  ne: [Int]
+
   \\"\\"\\"
   Checks for values equal to this value, treating null like an ordinary value.
   \\"\\"\\"
   notDistinctFrom: [Int]
-
-  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
-  notEqualTo: [Int]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -523,7 +508,7 @@ input JSONFilter {
   distinctFrom: JSON
 
   \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
-  equalTo: JSON
+  eq: JSON
 
   \\"\\"\\"Checks for values in this list.\\"\\"\\"
   in: [JSON!]
@@ -533,19 +518,16 @@ input JSONFilter {
   \\"\\"\\"
   isNull: Boolean
 
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  ne: JSON
+
   \\"\\"\\"
   Checks for values equal to this value, treating null like an ordinary value.
   \\"\\"\\"
   notDistinctFrom: JSON
 
-  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
-  notEqualTo: JSON
-
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [JSON!]
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
 }
 
 \\"\\"\\"
@@ -697,7 +679,7 @@ input StringFilter {
   endsWithInsensitive: String
 
   \\"\\"\\"Checks for values equal to this value.\\"\\"\\"
-  equalTo: String
+  eq: String
 
   \\"\\"\\"Checks for values greater than this value.\\"\\"\\"
   greaterThan: String
@@ -731,6 +713,9 @@ input StringFilter {
   \\"\\"\\"Raw SQL 'ilike', wildcards must be present and are not escaped\\"\\"\\"
   likeInsensitive: String
 
+  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
+  ne: String
+
   \\"\\"\\"
   Checks for values equal to this value, treating null like an ordinary value.
   \\"\\"\\"
@@ -743,9 +728,6 @@ input StringFilter {
   Checks for strings that do not end with this value.  Case insensitive.
   \\"\\"\\"
   notEndsWithInsensitive: String
-
-  \\"\\"\\"Checks for values not equal to this value.\\"\\"\\"
-  notEqualTo: String
 
   \\"\\"\\"Checks for values not in this list.\\"\\"\\"
   notIn: [String!]
@@ -778,7 +760,7 @@ input StringFilter {
   notStartsWithInsensitive: String
 
   \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: Boolean
+  overlapsBB: String
 
   \\"\\"\\"Raw SQL 'similar to', wildcards are not escaped\\"\\"\\"
   similarTo: String

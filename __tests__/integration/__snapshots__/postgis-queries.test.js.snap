@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`postgis-connections-filter.graphql 1`] = `
+Object {
+  "data": Object {
+    "overlapping": Object {
+      "edges": Array [
+        Object {
+          "cursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
+          "node": Object {
+            "id": 1,
+            "theGeom": "0102000000020000000000000000000000000000000000000000000000000008400000000000000840",
+          },
+        },
+      ],
+      "pageInfo": Object {
+        "endCursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
+        "hasNextPage": false,
+        "hasPreviousPage": false,
+        "startCursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
+      },
+      "totalCount": 1,
+    },
+  },
+}
+`;

@@ -1,19 +1,15 @@
 module.exports = function PgConnectionArgFilterPostgisOperatorsPlugin(builder) {
   builder.hook("init", (_, build) => {
-    const {
-      addConnectionFilterOperator,
-      pgSql: sql,
-      graphql: { GraphQLBoolean },
-    } = build;
+    const { addConnectionFilterOperator, pgSql: sql } = build;
     addConnectionFilterOperator(
       "overlapsBB",
       "Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.",
-      () => GraphQLBoolean,
+      fieldType => fieldType,
       (identifier, val) => {
-        return sql.query`${identifier} && ${val}`;
+        return sql.query`${identifier} && ${val}::geometry`;
       },
       {
-        resolveWithRawInput: true,
+        allowedFieldTypes: ["Geometry", "Geography", "String"],
         allowedListTypes: ["NonList", "List"],
       }
     );
