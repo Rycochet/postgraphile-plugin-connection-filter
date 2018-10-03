@@ -667,10 +667,13 @@ type Query implements Node {
 A filter to be used against String fields. All fields are combined with a logical ‘and.’
 \\"\\"\\"
 input StringFilter {
+  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
+  bboxIntersects2D: String
+
   \\"\\"\\"
   Returns TRUE if the Geometries do not 'spatially intersect' - if they do not share any space together.
   \\"\\"\\"
-  disjointsG: String
+  disjoint: String
 
   \\"\\"\\"
   Checks for values not equal to this value, treating null like an ordinary value.
@@ -704,7 +707,7 @@ input StringFilter {
   \\"\\"\\"
   Returns TRUE if the Geometries/Geography 'spatially intersect in 2D' - (share any portion of space).
   \\"\\"\\"
-  intersectsG: String
+  intersects: String
 
   \\"\\"\\"
   If set to true, checks for null values.  If set to false, checks for non-null values.
@@ -768,9 +771,6 @@ input StringFilter {
   Checks for strings that do not start with this value.  Case insensitive.
   \\"\\"\\"
   notStartsWithInsensitive: String
-
-  \\"\\"\\"Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.\\"\\"\\"
-  overlapsBB: String
 
   \\"\\"\\"Raw SQL 'similar to', wildcards are not escaped\\"\\"\\"
   similarTo: String

@@ -3,7 +3,7 @@
 exports[`postgis-connections-filter.graphql 1`] = `
 Object {
   "data": Object {
-    "disjointG": Object {
+    "bboxIntersects2D": Object {
       "edges": Array [
         Object {
           "cursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
@@ -21,7 +21,25 @@ Object {
       },
       "totalCount": 1,
     },
-    "intersectsG": Object {
+    "disjoint": Object {
+      "edges": Array [
+        Object {
+          "cursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
+          "node": Object {
+            "id": 1,
+            "theGeom": "0102000000020000000000000000000000000000000000000000000000000008400000000000000840",
+          },
+        },
+      ],
+      "pageInfo": Object {
+        "endCursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
+        "hasNextPage": false,
+        "hasPreviousPage": false,
+        "startCursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
+      },
+      "totalCount": 1,
+    },
+    "intersect": Object {
       "edges": Array [
         Object {
           "cursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
@@ -45,24 +63,6 @@ Object {
         "startCursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
       },
       "totalCount": 2,
-    },
-    "overlapping": Object {
-      "edges": Array [
-        Object {
-          "cursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
-          "node": Object {
-            "id": 1,
-            "theGeom": "0102000000020000000000000000000000000000000000000000000000000008400000000000000840",
-          },
-        },
-      ],
-      "pageInfo": Object {
-        "endCursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
-        "hasNextPage": false,
-        "hasPreviousPage": false,
-        "startCursor": "WyJwcmltYXJ5X2tleV9hc2MiLFsxXV0=",
-      },
-      "totalCount": 1,
     },
   },
 }

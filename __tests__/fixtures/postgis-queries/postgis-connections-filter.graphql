@@ -1,7 +1,7 @@
 query {
-  overlapping: allFilterables(filter: { theGeom: { overlapsBB: "LINESTRING(1 2, 4 6)" } }) { ...filterableConnection }
-  disjointG: allFilterables(filter: { theGeom: { disjointsG: "LINESTRING(0 5, 4 6)" } }) { ...filterableConnection }
-  intersectsG: allFilterables(filter: { theGeom: { intersectsG: "LINESTRING(-1 1, 3 1)" } }) { ...filterableConnection }
+  bboxIntersects2D: allFilterables(filter: { theGeom: { bboxIntersects2D: "LINESTRING(1 2, 4 6)" } }) { ...filterableConnection }
+  disjoint: allFilterables(filter: { theGeom: { disjoint: "LINESTRING(0 5, 4 6)" } }) { ...filterableConnection }
+  intersect: allFilterables(filter: { theGeom: { intersects: "LINESTRING(-1 1, 3 1)" } }) { ...filterableConnection }
 }
 
 fragment filterableConnection on FilterablesConnection {

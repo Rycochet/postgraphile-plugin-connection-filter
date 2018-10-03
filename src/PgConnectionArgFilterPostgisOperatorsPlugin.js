@@ -2,7 +2,7 @@ module.exports = function PgConnectionArgFilterPostgisOperatorsPlugin(builder) {
   builder.hook("init", (_, build) => {
     const { addConnectionFilterOperator, pgSql: sql } = build;
     addConnectionFilterOperator(
-      "overlapsBB",
+      "bboxIntersects2D",
       "Returns TRUE if A's 2D bounding box intersects B's 2D bounding box.",
       fieldType => fieldType,
       (identifier, val) => {
@@ -14,7 +14,7 @@ module.exports = function PgConnectionArgFilterPostgisOperatorsPlugin(builder) {
       }
     );
     addConnectionFilterOperator(
-      "disjointsG",
+      "disjoint",
       "Returns TRUE if the Geometries do not 'spatially intersect' - if they do not share any space together.",
       fieldType => fieldType,
       (identifier, val) => {
@@ -26,7 +26,7 @@ module.exports = function PgConnectionArgFilterPostgisOperatorsPlugin(builder) {
       }
     );
     addConnectionFilterOperator(
-      "intersectsG",
+      "intersects",
       "Returns TRUE if the Geometries/Geography 'spatially intersect in 2D' - (share any portion of space).",
       fieldType => fieldType,
       (identifier, val) => {
